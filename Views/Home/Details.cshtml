@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AACalendar.Models.Entities.Employee>
+
+@{
+    ViewData["Title"] = "Details Page";
+}
+<link href="~/css/Details.css" rel="stylesheet" />
+
+<h1 style="text-align: center;">AAEmployees</h1>
+<a style="float: right; margin-top: 10px;" class="btn btn-primary" asp-controller="Home" asp-action="Add">
+    Add
+</a>
+
+<div>
+    <input type="text" class="search-bar" id="search-input" placeholder="Search by name...">
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody id="employee-list">
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Firstname @employee.Lastname</td>
+                <td>@employee.Position</td>
+                <td>@employee.Department</td>
+                <td>@employee.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/js/Details.js"></script>

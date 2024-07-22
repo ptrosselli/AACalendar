@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AACalendar.Models.Entities.Employee>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>HOME</div>
+
+@*
+<link href="~/css/Calendar.css" rel="stylesheet" />
+
+<html>
+    <div class="grid">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+    </div>
+</html>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gridItems = document.querySelectorAll('.grid-item');
+
+            gridItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove 'clicked' class from all items
+                    gridItems.forEach(i => i.classList.remove('clicked'));
+
+                    // Add 'clicked' class to the clicked item
+                    this.classList.add('clicked');
+
+                    // Calculate new sizes for surrounding items
+                    const currentIndex = Array.from(gridItems).indexOf(this);
+                    const numColumns = 7; // Adjust according to your grid setup
+                    const numRows = 4; // Adjust according to your grid setup
+
+                    // Calculate row and column indices
+                    const currentRow = Math.floor(currentIndex / numColumns);
+                    const currentCol = currentIndex % numColumns;
+
+                    // Determine the expansion size
+                    const expandFactor = 1.5; // Adjust as needed
+                    const originalWidth = 100; // Adjust as needed
+                    const expandedWidth = expandFactor * originalWidth;
+                    const shrinkWidth = (originalWidth - expandedWidth) / (numColumns - 1);
+                    const shrinkHeight = (originalWidth - expandedWidth) / (numRows - 1);
+
+                    // Loop through all items to resize
+                    gridItems.forEach((item, index) => {
+                        const row = Math.floor(index / numColumns);
+                        const col = index % numColumns;
+
+                        if (index !== currentIndex) {
+                            // Calculate new width and height
+                            let newWidth = originalWidth;
+                            let newHeight = originalWidth;
+
+                            // Adjust width of items in the same row or column as the clicked item
+                            if (row === currentRow) {
+                                newWidth -= shrinkWidth;
+                            }
+                            if (col === currentCol) {
+                                newHeight -= shrinkHeight;
+                            }
+
+                            // Apply new size
+                            item.style.width = `${newWidth}%`;
+                            item.style.height = `${newHeight}%`;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}
+ *@
